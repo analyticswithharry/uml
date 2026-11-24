@@ -62,7 +62,7 @@ export default function Home() {
         <div className="hero-copy">
           <h1>Software Engineering</h1>
           <p>
-            class, Use Case and ER diagrams on a real canvas. Each scenario reads like an exam question, and the checker circles what a
+            Class, Use Case and ER diagrams on a real canvas. Each scenario reads like an exam question, and the checker circles what a
             marker would: the wrong arrow, the missing line, the cardinality you flipped.
           </p>
           <div className="hero-cta">
