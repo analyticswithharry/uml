@@ -69,7 +69,7 @@ export default function Home() {
             <Link className="btn primary lg" to="/practice">Start a scenario</Link>
             <Link className="btn lg" to="/studio?new=1">Open a blank board</Link>
           </div>
-          <p className="hero-fine">14 exam-style scenarios · nothing is stored on a server · refresh and the board is clean</p>
+          <p className="hero-fine">System Deisgn Analyst</p>
         </div>
         <MarkedDiagram />
       </section>
