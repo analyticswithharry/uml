@@ -1,0 +1,879 @@
+[
+  {
+    "id": "tpl-class-strategy",
+    "diagramType": "class",
+    "title": "Strategy pattern",
+    "description": "Context + interface + two strategies.",
+    "diagram": {
+      "nodes": [
+        {
+          "id": "checkout",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 120
+          },
+          "data": {
+            "label": "CheckoutService",
+            "kind": "class",
+            "attributes": "",
+            "methods": "+ pay(amount: double): boolean"
+          }
+        },
+        {
+          "id": "method",
+          "type": "umlClass",
+          "position": {
+            "x": 340,
+            "y": 120
+          },
+          "data": {
+            "label": "PaymentMethod",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        },
+        {
+          "id": "card",
+          "type": "umlClass",
+          "position": {
+            "x": 200,
+            "y": 360
+          },
+          "data": {
+            "label": "CreditCard",
+            "kind": "class",
+            "attributes": "- number: String",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        },
+        {
+          "id": "paypal",
+          "type": "umlClass",
+          "position": {
+            "x": 500,
+            "y": 360
+          },
+          "data": {
+            "label": "PayPal",
+            "kind": "class",
+            "attributes": "- email: String",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e3",
+          "source": "card",
+          "target": "method",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e4",
+          "source": "paypal",
+          "target": "method",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e5",
+          "source": "checkout",
+          "target": "method",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": "",
+            "accept": [
+              "association",
+              "dependency"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl-class-layers",
+    "diagramType": "class",
+    "title": "Layered web app",
+    "description": "Controller, service, repository, entity.",
+    "diagram": {
+      "nodes": [
+        {
+          "id": "ctl",
+          "type": "umlClass",
+          "position": {
+            "x": 280,
+            "y": 20
+          },
+          "data": {
+            "label": "UserController",
+            "kind": "class",
+            "attributes": "",
+            "methods": "+ register(dto: UserDto): Response"
+          }
+        },
+        {
+          "id": "svc",
+          "type": "umlClass",
+          "position": {
+            "x": 280,
+            "y": 220
+          },
+          "data": {
+            "label": "UserService",
+            "kind": "class",
+            "attributes": "",
+            "methods": "+ create(dto: UserDto): User"
+          }
+        },
+        {
+          "id": "repo",
+          "type": "umlClass",
+          "position": {
+            "x": 280,
+            "y": 420
+          },
+          "data": {
+            "label": "UserRepository",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ save(u: User): User\n+ findById(id: long): User"
+          }
+        },
+        {
+          "id": "jpa",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 640
+          },
+          "data": {
+            "label": "JpaUserRepository",
+            "kind": "class",
+            "attributes": "",
+            "methods": "+ save(u: User): User\n+ findById(id: long): User"
+          }
+        },
+        {
+          "id": "user",
+          "type": "umlClass",
+          "position": {
+            "x": 620,
+            "y": 420
+          },
+          "data": {
+            "label": "User",
+            "kind": "class",
+            "attributes": "- id: long\n- email: String\n- passwordHash: String",
+            "methods": ""
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e53",
+          "source": "ctl",
+          "target": "svc",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e54",
+          "source": "svc",
+          "target": "repo",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e55",
+          "source": "jpa",
+          "target": "repo",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e56",
+          "source": "repo",
+          "target": "user",
+          "type": "uml",
+          "data": {
+            "relType": "dependency",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl-uc-login",
+    "diagramType": "usecase",
+    "title": "Login system",
+    "description": "Guest, user, admin with include/extend.",
+    "diagram": {
+      "nodes": [
+        {
+          "id": "b",
+          "type": "boundary",
+          "position": {
+            "x": 240,
+            "y": 0
+          },
+          "width": 440,
+          "height": 420,
+          "zIndex": -1,
+          "data": {
+            "label": "Web App"
+          }
+        },
+        {
+          "id": "guest",
+          "type": "actor",
+          "position": {
+            "x": 30,
+            "y": 60
+          },
+          "data": {
+            "label": "Guest"
+          }
+        },
+        {
+          "id": "user",
+          "type": "actor",
+          "position": {
+            "x": 30,
+            "y": 260
+          },
+          "data": {
+            "label": "User"
+          }
+        },
+        {
+          "id": "admin",
+          "type": "actor",
+          "position": {
+            "x": 760,
+            "y": 260
+          },
+          "data": {
+            "label": "Admin"
+          }
+        },
+        {
+          "id": "reg",
+          "type": "useCase",
+          "position": {
+            "x": 320,
+            "y": 50
+          },
+          "data": {
+            "label": "Register"
+          }
+        },
+        {
+          "id": "login",
+          "type": "useCase",
+          "position": {
+            "x": 320,
+            "y": 170
+          },
+          "data": {
+            "label": "Log In"
+          }
+        },
+        {
+          "id": "reset",
+          "type": "useCase",
+          "position": {
+            "x": 500,
+            "y": 170
+          },
+          "data": {
+            "label": "Reset Password"
+          }
+        },
+        {
+          "id": "manage",
+          "type": "useCase",
+          "position": {
+            "x": 450,
+            "y": 300
+          },
+          "data": {
+            "label": "Manage Users"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e57",
+          "source": "guest",
+          "target": "reg",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e58",
+          "source": "user",
+          "target": "login",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e59",
+          "source": "reset",
+          "target": "login",
+          "type": "uml",
+          "data": {
+            "relType": "extend",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e60",
+          "source": "admin",
+          "target": "manage",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e61",
+          "source": "admin",
+          "target": "user",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl-uc-atm",
+    "diagramType": "usecase",
+    "title": "ATM system",
+    "description": "Worked example with include and extend.",
+    "diagram": {
+      "nodes": [
+        {
+          "id": "b",
+          "type": "boundary",
+          "position": {
+            "x": 230,
+            "y": 0
+          },
+          "width": 520,
+          "height": 560,
+          "zIndex": -1,
+          "data": {
+            "label": "ATM"
+          }
+        },
+        {
+          "id": "customer",
+          "type": "actor",
+          "position": {
+            "x": 30,
+            "y": 210
+          },
+          "data": {
+            "label": "Customer",
+            "aliases": [
+              "Client",
+              "Account Holder"
+            ]
+          }
+        },
+        {
+          "id": "bank",
+          "type": "actor",
+          "position": {
+            "x": 830,
+            "y": 240
+          },
+          "data": {
+            "label": "Bank",
+            "aliases": [
+              "Bank System",
+              "Banking System"
+            ]
+          }
+        },
+        {
+          "id": "tech",
+          "type": "actor",
+          "position": {
+            "x": 830,
+            "y": 440
+          },
+          "data": {
+            "label": "Technician",
+            "aliases": [
+              "ATM Technician",
+              "Maintenance Engineer"
+            ]
+          }
+        },
+        {
+          "id": "receipt",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 50
+          },
+          "data": {
+            "label": "Print Receipt",
+            "aliases": [
+              "Receipt"
+            ]
+          }
+        },
+        {
+          "id": "withdraw",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 170
+          },
+          "data": {
+            "label": "Withdraw Cash",
+            "aliases": [
+              "Withdraw Money",
+              "Cash Withdrawal"
+            ]
+          }
+        },
+        {
+          "id": "balance",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 310
+          },
+          "data": {
+            "label": "Check Balance",
+            "aliases": [
+              "View Balance"
+            ]
+          }
+        },
+        {
+          "id": "auth",
+          "type": "useCase",
+          "position": {
+            "x": 540,
+            "y": 240
+          },
+          "data": {
+            "label": "Authenticate",
+            "aliases": [
+              "Verify PIN",
+              "Authentication",
+              "Enter PIN",
+              "Login"
+            ]
+          }
+        },
+        {
+          "id": "refill",
+          "type": "useCase",
+          "position": {
+            "x": 540,
+            "y": 440
+          },
+          "data": {
+            "label": "Refill Cash",
+            "aliases": [
+              "Refill ATM",
+              "Load Cash"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e32",
+          "source": "customer",
+          "target": "withdraw",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e33",
+          "source": "customer",
+          "target": "balance",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e34",
+          "source": "withdraw",
+          "target": "auth",
+          "type": "uml",
+          "data": {
+            "relType": "include",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e35",
+          "source": "balance",
+          "target": "auth",
+          "type": "uml",
+          "data": {
+            "relType": "include",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e36",
+          "source": "bank",
+          "target": "auth",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e37",
+          "source": "receipt",
+          "target": "withdraw",
+          "type": "uml",
+          "data": {
+            "relType": "extend",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e38",
+          "source": "tech",
+          "target": "refill",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl-er-library",
+    "diagramType": "er",
+    "title": "Library loans",
+    "description": "Books, members, loans.",
+    "diagram": {
+      "nodes": [
+        {
+          "id": "member",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 60
+          },
+          "data": {
+            "label": "Member",
+            "attributes": "PK id: int\nname: varchar\njoined: date"
+          }
+        },
+        {
+          "id": "loan",
+          "type": "erEntity",
+          "position": {
+            "x": 400,
+            "y": 60
+          },
+          "data": {
+            "label": "Loan",
+            "attributes": "PK id: int\nFK member_id: int\nFK copy_id: int\ndue: date"
+          }
+        },
+        {
+          "id": "copy",
+          "type": "erEntity",
+          "position": {
+            "x": 400,
+            "y": 360
+          },
+          "data": {
+            "label": "BookCopy",
+            "attributes": "PK id: int\nFK book_id: int\nshelf: varchar"
+          }
+        },
+        {
+          "id": "book",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 360
+          },
+          "data": {
+            "label": "Book",
+            "attributes": "PK id: int\ntitle: varchar\nisbn: varchar"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e62",
+          "source": "member",
+          "target": "loan",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e63",
+          "source": "copy",
+          "target": "loan",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e64",
+          "source": "book",
+          "target": "copy",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "one_or_many"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl-er-orders",
+    "diagramType": "er",
+    "title": "E-commerce orders",
+    "description": "Customer, order, order item, product.",
+    "diagram": {
+      "nodes": [
+        {
+          "id": "customer",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 60
+          },
+          "data": {
+            "label": "Customer",
+            "attributes": "PK id: int\nname: varchar\nemail: varchar"
+          }
+        },
+        {
+          "id": "order",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 60
+          },
+          "data": {
+            "label": "Order",
+            "attributes": "PK id: int\nFK customer_id: int\nplaced_at: datetime"
+          }
+        },
+        {
+          "id": "item",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 380
+          },
+          "data": {
+            "label": "OrderItem",
+            "attributes": "PK id: int\nFK order_id: int\nFK product_id: int\nquantity: int",
+            "aliases": [
+              "Order Line",
+              "OrderLine"
+            ]
+          }
+        },
+        {
+          "id": "product",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 380
+          },
+          "data": {
+            "label": "Product",
+            "attributes": "PK id: int\nname: varchar\nprice: decimal"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e47",
+          "source": "customer",
+          "target": "order",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e48",
+          "source": "order",
+          "target": "item",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "one_or_many"
+          }
+        },
+        {
+          "id": "e49",
+          "source": "product",
+          "target": "item",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        }
+      ]
+    }
+  }
+]

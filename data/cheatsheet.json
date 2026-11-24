@@ -1,0 +1,188 @@
+{
+  "relationships": [
+    {
+      "relType": "association",
+      "name": "Association",
+      "diagram": "class",
+      "meaning": "Two classes know about each other (\"uses\", \"has a reference to\").",
+      "tip": "Add multiplicity at each end: 1, 0..1, *, 1..*.",
+      "draw": "Plain line, optional open arrow for direction."
+    },
+    {
+      "relType": "aggregation",
+      "name": "Aggregation",
+      "diagram": "class",
+      "meaning": "Whole–part where the part can exist on its own (a Team has Players).",
+      "tip": "Hollow diamond on the whole. In Redpen, draw the line from part to whole.",
+      "draw": "Line with a hollow diamond at the whole."
+    },
+    {
+      "relType": "composition",
+      "name": "Composition",
+      "diagram": "class",
+      "meaning": "Whole–part where the part dies with the whole (an Order has OrderLines).",
+      "tip": "Test: delete the whole. Does the part still make sense? If no, composition.",
+      "draw": "Line with a filled diamond at the whole."
+    },
+    {
+      "relType": "generalization",
+      "name": "Generalization",
+      "diagram": "class",
+      "meaning": "\"Is a\": a subclass inherits from a superclass.",
+      "tip": "Arrow points from child to parent. Works for actors too.",
+      "draw": "Solid line with a hollow triangle at the parent."
+    },
+    {
+      "relType": "realization",
+      "name": "Realization",
+      "diagram": "class",
+      "meaning": "A class implements an interface.",
+      "tip": "Dashed, not solid. Do not confuse with generalization.",
+      "draw": "Dashed line with a hollow triangle at the interface."
+    },
+    {
+      "relType": "dependency",
+      "name": "Dependency",
+      "diagram": "class",
+      "meaning": "One class temporarily uses another (parameter, local variable).",
+      "tip": "Weakest link. Use it when the other class is not stored as an attribute.",
+      "draw": "Dashed line with an open arrow at the used class."
+    },
+    {
+      "relType": "include",
+      "name": "Include",
+      "diagram": "usecase",
+      "meaning": "A use case always runs another one as part of itself.",
+      "tip": "Arrow from the base to the included use case. Label «include».",
+      "draw": "Dashed open arrow, base → included."
+    },
+    {
+      "relType": "extend",
+      "name": "Extend",
+      "diagram": "usecase",
+      "meaning": "A use case optionally adds behaviour to a base use case.",
+      "tip": "Arrow from the extension to the base. Label «extend». Opposite direction to include.",
+      "draw": "Dashed open arrow, extension → base."
+    }
+  ],
+  "multiplicity": [
+    {
+      "symbol": "1",
+      "meaning": "Exactly one"
+    },
+    {
+      "symbol": "0..1",
+      "meaning": "Zero or one (optional)"
+    },
+    {
+      "symbol": "*",
+      "meaning": "Zero or more"
+    },
+    {
+      "symbol": "1..*",
+      "meaning": "One or more"
+    },
+    {
+      "symbol": "m..n",
+      "meaning": "Between m and n, e.g. 2..5"
+    }
+  ],
+  "cardinality": [
+    {
+      "card": "one_only",
+      "symbol": "||",
+      "meaning": "Exactly one",
+      "read": "Mandatory, single"
+    },
+    {
+      "card": "zero_or_one",
+      "symbol": "o|",
+      "meaning": "Zero or one",
+      "read": "Optional, single"
+    },
+    {
+      "card": "one_or_many",
+      "symbol": "|{",
+      "meaning": "One or many",
+      "read": "Mandatory, multiple"
+    },
+    {
+      "card": "zero_or_many",
+      "symbol": "o{",
+      "meaning": "Zero or many",
+      "read": "Optional, multiple"
+    }
+  ],
+  "classKinds": [
+    {
+      "kind": "class",
+      "name": "Class",
+      "note": "Concrete type. Name in bold, attributes, then operations."
+    },
+    {
+      "kind": "abstract",
+      "name": "Abstract class",
+      "note": "Cannot be instantiated. Name in italics or «abstract»."
+    },
+    {
+      "kind": "interface",
+      "name": "Interface",
+      "note": "Only operation signatures. Marked «interface»."
+    },
+    {
+      "kind": "enum",
+      "name": "Enumeration",
+      "note": "Fixed set of values. Marked «enumeration»."
+    }
+  ],
+  "visibility": [
+    {
+      "symbol": "+",
+      "meaning": "public"
+    },
+    {
+      "symbol": "-",
+      "meaning": "private"
+    },
+    {
+      "symbol": "#",
+      "meaning": "protected"
+    },
+    {
+      "symbol": "~",
+      "meaning": "package"
+    }
+  ],
+  "traps": [
+    "Arrow direction: generalization and realization point at the parent / interface. Extend points at the base, include points at the included use case.",
+    "Diamonds sit on the whole, never on the part.",
+    "Dashed vs solid: realization is dashed, generalization is solid.",
+    "Actors live outside the system boundary; use cases live inside it.",
+    "Never connect two actors with an association. Use generalization if one is a kind of the other.",
+    "Many-to-many in an ER diagram needs a link entity with two foreign keys.",
+    "Read crow's foot ends at the entity they touch: the symbol next to Order says how many Orders.",
+    "Use nouns for classes and entities, verbs for use cases."
+  ],
+  "steps": [
+    {
+      "title": "Underline the nouns",
+      "body": "Candidate classes, entities or actors. Merge synonyms, drop attributes."
+    },
+    {
+      "title": "Circle the verbs",
+      "body": "Candidate use cases or relationships between the nouns."
+    },
+    {
+      "title": "Look for \"is a\" and \"has a\"",
+      "body": "\"Is a\" is generalization or realization. \"Has a\" is association, aggregation or composition."
+    },
+    {
+      "title": "Add numbers",
+      "body": "Words like \"many\", \"at least one\", \"optional\" become multiplicity or cardinality."
+    },
+    {
+      "title": "Re-read the text against your diagram",
+      "body": "Every sentence should be visible in the drawing."
+    }
+  ]
+}

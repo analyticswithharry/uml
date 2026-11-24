@@ -1,0 +1,2584 @@
+[
+  {
+    "id": "class-01-notifications",
+    "number": 1,
+    "title": "Notification channels",
+    "diagramType": "class",
+    "mode": "build",
+    "difficulty": "Beginner",
+    "category": "Inheritance",
+    "scenario": "A messaging module has an abstract Notification class with a send() method. EmailNotification and SmsNotification are concrete channels that inherit from it.",
+    "goal": "Connect both channels to their abstract base class.",
+    "objective": "Generalization points from the child to the parent, with a hollow triangle on the parent.",
+    "hints": [
+      "Inheritance is called generalization in UML.",
+      "Draw the line from each subclass to Notification.",
+      "EmailNotification → Notification and SmsNotification → Notification, both generalization."
+    ],
+    "explanation": "Both channels specialise the abstract Notification, so each gets a generalization pointing at it.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "notification",
+          "type": "umlClass",
+          "position": {
+            "x": 280,
+            "y": 40
+          },
+          "data": {
+            "label": "Notification",
+            "kind": "abstract",
+            "attributes": "# recipient: String",
+            "methods": "+ send(): void"
+          }
+        },
+        {
+          "id": "email",
+          "type": "umlClass",
+          "position": {
+            "x": 60,
+            "y": 280
+          },
+          "data": {
+            "label": "EmailNotification",
+            "kind": "class",
+            "attributes": "- subject: String",
+            "methods": "+ send(): void"
+          }
+        },
+        {
+          "id": "sms",
+          "type": "umlClass",
+          "position": {
+            "x": 500,
+            "y": 280
+          },
+          "data": {
+            "label": "SmsNotification",
+            "kind": "class",
+            "attributes": "- phone: String",
+            "methods": "+ send(): void"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "notification",
+          "type": "umlClass",
+          "position": {
+            "x": 280,
+            "y": 40
+          },
+          "data": {
+            "label": "Notification",
+            "kind": "abstract",
+            "attributes": "# recipient: String",
+            "methods": "+ send(): void"
+          }
+        },
+        {
+          "id": "email",
+          "type": "umlClass",
+          "position": {
+            "x": 60,
+            "y": 280
+          },
+          "data": {
+            "label": "EmailNotification",
+            "kind": "class",
+            "attributes": "- subject: String",
+            "methods": "+ send(): void"
+          }
+        },
+        {
+          "id": "sms",
+          "type": "umlClass",
+          "position": {
+            "x": 500,
+            "y": 280
+          },
+          "data": {
+            "label": "SmsNotification",
+            "kind": "class",
+            "attributes": "- phone: String",
+            "methods": "+ send(): void"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e1",
+          "source": "email",
+          "target": "notification",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e2",
+          "source": "sms",
+          "target": "notification",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "class-02-payment-strategy",
+    "number": 2,
+    "title": "Pluggable payment methods",
+    "diagramType": "class",
+    "mode": "build",
+    "difficulty": "Beginner",
+    "category": "Interfaces",
+    "scenario": "CheckoutService takes payments through a PaymentMethod interface. CreditCard and PayPal both implement that interface. CheckoutService only knows the interface, never the concrete classes.",
+    "goal": "Show who implements the interface and who uses it.",
+    "objective": "Realization (dashed line, hollow triangle) is for implementing an interface; a plain association is for using one.",
+    "hints": [
+      "Implementing an interface is realization, not generalization.",
+      "CreditCard and PayPal each realize PaymentMethod.",
+      "CheckoutService uses PaymentMethod: an association from CheckoutService to PaymentMethod."
+    ],
+    "explanation": "Concrete classes realize the interface; the client depends on the interface only, so there is no line from CheckoutService to CreditCard or PayPal.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "checkout",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 120
+          },
+          "data": {
+            "label": "CheckoutService",
+            "kind": "class",
+            "attributes": "",
+            "methods": "+ pay(amount: double): boolean"
+          }
+        },
+        {
+          "id": "method",
+          "type": "umlClass",
+          "position": {
+            "x": 340,
+            "y": 120
+          },
+          "data": {
+            "label": "PaymentMethod",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        },
+        {
+          "id": "card",
+          "type": "umlClass",
+          "position": {
+            "x": 200,
+            "y": 360
+          },
+          "data": {
+            "label": "CreditCard",
+            "kind": "class",
+            "attributes": "- number: String",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        },
+        {
+          "id": "paypal",
+          "type": "umlClass",
+          "position": {
+            "x": 500,
+            "y": 360
+          },
+          "data": {
+            "label": "PayPal",
+            "kind": "class",
+            "attributes": "- email: String",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "checkout",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 120
+          },
+          "data": {
+            "label": "CheckoutService",
+            "kind": "class",
+            "attributes": "",
+            "methods": "+ pay(amount: double): boolean"
+          }
+        },
+        {
+          "id": "method",
+          "type": "umlClass",
+          "position": {
+            "x": 340,
+            "y": 120
+          },
+          "data": {
+            "label": "PaymentMethod",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        },
+        {
+          "id": "card",
+          "type": "umlClass",
+          "position": {
+            "x": 200,
+            "y": 360
+          },
+          "data": {
+            "label": "CreditCard",
+            "kind": "class",
+            "attributes": "- number: String",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        },
+        {
+          "id": "paypal",
+          "type": "umlClass",
+          "position": {
+            "x": 500,
+            "y": 360
+          },
+          "data": {
+            "label": "PayPal",
+            "kind": "class",
+            "attributes": "- email: String",
+            "methods": "+ charge(amount: double): boolean"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e3",
+          "source": "card",
+          "target": "method",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e4",
+          "source": "paypal",
+          "target": "method",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e5",
+          "source": "checkout",
+          "target": "method",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": "",
+            "accept": [
+              "association",
+              "dependency"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "class-03-order-lines",
+    "number": 3,
+    "title": "Orders own their lines",
+    "diagramType": "class",
+    "mode": "build",
+    "difficulty": "Easy",
+    "category": "Composition",
+    "scenario": "A Customer places many Orders. An Order is made of OrderLines; if the Order is deleted its lines disappear with it. Each OrderLine refers to one Product, and a Product lives on without any order.",
+    "goal": "Choose the right whole-part relationship for Order/OrderLine and plain associations elsewhere.",
+    "objective": "Composition = the part cannot outlive the whole. The filled diamond sits on the whole.",
+    "hints": [
+      "Lines that die with their order are a composition.",
+      "Draw the composition from OrderLine (part) to Order (whole).",
+      "Customer–Order and OrderLine–Product are associations."
+    ],
+    "explanation": "OrderLine → Order is composition (diamond on Order). Customer–Order and OrderLine–Product are ordinary associations, because Customer and Product exist independently.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "order",
+          "type": "umlClass",
+          "position": {
+            "x": 300,
+            "y": 40
+          },
+          "data": {
+            "label": "Order",
+            "kind": "class",
+            "attributes": "- id: int\n- placedAt: Date",
+            "methods": "+ total(): double"
+          }
+        },
+        {
+          "id": "line",
+          "type": "umlClass",
+          "position": {
+            "x": 300,
+            "y": 280
+          },
+          "data": {
+            "label": "OrderLine",
+            "kind": "class",
+            "attributes": "- quantity: int",
+            "methods": "+ subtotal(): double"
+          }
+        },
+        {
+          "id": "customer",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 40
+          },
+          "data": {
+            "label": "Customer",
+            "kind": "class",
+            "attributes": "- name: String\n- email: String",
+            "methods": ""
+          }
+        },
+        {
+          "id": "product",
+          "type": "umlClass",
+          "position": {
+            "x": 560,
+            "y": 280
+          },
+          "data": {
+            "label": "Product",
+            "kind": "class",
+            "attributes": "- sku: String\n- price: double",
+            "methods": ""
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "order",
+          "type": "umlClass",
+          "position": {
+            "x": 300,
+            "y": 40
+          },
+          "data": {
+            "label": "Order",
+            "kind": "class",
+            "attributes": "- id: int\n- placedAt: Date",
+            "methods": "+ total(): double"
+          }
+        },
+        {
+          "id": "line",
+          "type": "umlClass",
+          "position": {
+            "x": 300,
+            "y": 280
+          },
+          "data": {
+            "label": "OrderLine",
+            "kind": "class",
+            "attributes": "- quantity: int",
+            "methods": "+ subtotal(): double"
+          }
+        },
+        {
+          "id": "customer",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 40
+          },
+          "data": {
+            "label": "Customer",
+            "kind": "class",
+            "attributes": "- name: String\n- email: String",
+            "methods": ""
+          }
+        },
+        {
+          "id": "product",
+          "type": "umlClass",
+          "position": {
+            "x": 560,
+            "y": 280
+          },
+          "data": {
+            "label": "Product",
+            "kind": "class",
+            "attributes": "- sku: String\n- price: double",
+            "methods": ""
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e6",
+          "source": "line",
+          "target": "order",
+          "type": "uml",
+          "data": {
+            "relType": "composition",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e7",
+          "source": "customer",
+          "target": "order",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e8",
+          "source": "line",
+          "target": "product",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "class-04-observer",
+    "number": 4,
+    "title": "Observer pattern",
+    "diagramType": "class",
+    "mode": "build",
+    "difficulty": "Intermediate",
+    "category": "Design patterns",
+    "scenario": "In an Observer pattern, Subject and Observer are interfaces. WeatherStation implements Subject. PhoneDisplay implements Observer and keeps a reference to the WeatherStation it reads from. A Subject keeps a list of Observers.",
+    "goal": "Wire up both implementations and the two associations.",
+    "objective": "Combine realization and association correctly in one pattern.",
+    "hints": [
+      "Two realizations: WeatherStation → Subject, PhoneDisplay → Observer.",
+      "Subject knows its Observers: association between Subject and Observer.",
+      "PhoneDisplay holds a WeatherStation: association between them."
+    ],
+    "explanation": "The pattern is two realizations plus two associations: Subject—Observer (the list) and PhoneDisplay—WeatherStation (the state it reads).",
+    "initial": {
+      "nodes": [
+        {
+          "id": "subject",
+          "type": "umlClass",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Subject",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ attach(o: Observer): void\n+ notifyAll(): void"
+          }
+        },
+        {
+          "id": "observer",
+          "type": "umlClass",
+          "position": {
+            "x": 600,
+            "y": 20
+          },
+          "data": {
+            "label": "Observer",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ update(): void"
+          }
+        },
+        {
+          "id": "weather",
+          "type": "umlClass",
+          "position": {
+            "x": 260,
+            "y": 300
+          },
+          "data": {
+            "label": "WeatherStation",
+            "kind": "class",
+            "attributes": "- temperature: double",
+            "methods": "+ attach(o: Observer): void\n+ notifyAll(): void"
+          }
+        },
+        {
+          "id": "display",
+          "type": "umlClass",
+          "position": {
+            "x": 600,
+            "y": 300
+          },
+          "data": {
+            "label": "PhoneDisplay",
+            "kind": "class",
+            "attributes": "- station: WeatherStation",
+            "methods": "+ update(): void"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "subject",
+          "type": "umlClass",
+          "position": {
+            "x": 260,
+            "y": 20
+          },
+          "data": {
+            "label": "Subject",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ attach(o: Observer): void\n+ notifyAll(): void"
+          }
+        },
+        {
+          "id": "observer",
+          "type": "umlClass",
+          "position": {
+            "x": 600,
+            "y": 20
+          },
+          "data": {
+            "label": "Observer",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ update(): void"
+          }
+        },
+        {
+          "id": "weather",
+          "type": "umlClass",
+          "position": {
+            "x": 260,
+            "y": 300
+          },
+          "data": {
+            "label": "WeatherStation",
+            "kind": "class",
+            "attributes": "- temperature: double",
+            "methods": "+ attach(o: Observer): void\n+ notifyAll(): void"
+          }
+        },
+        {
+          "id": "display",
+          "type": "umlClass",
+          "position": {
+            "x": 600,
+            "y": 300
+          },
+          "data": {
+            "label": "PhoneDisplay",
+            "kind": "class",
+            "attributes": "- station: WeatherStation",
+            "methods": "+ update(): void"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e9",
+          "source": "weather",
+          "target": "subject",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e10",
+          "source": "display",
+          "target": "observer",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e11",
+          "source": "subject",
+          "target": "observer",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "*",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e12",
+          "source": "display",
+          "target": "weather",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": "",
+            "accept": [
+              "association",
+              "dependency"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "class-05-university",
+    "number": 5,
+    "title": "University model",
+    "diagramType": "class",
+    "mode": "model",
+    "difficulty": "Intermediate",
+    "category": "Model from text",
+    "scenario": "A university has people. A person is either a Student or a Professor (both have a name and an email, so those live in a shared abstract Person class). Students enrol in Courses. Professors teach Courses and belong to a Department. A Course is offered by one Department.",
+    "goal": "Draw the five classes and every relationship in the text. Add at least the key attributes.",
+    "objective": "Spot inheritance hidden in plain language and keep associations between the right pairs.",
+    "hints": [
+      "Look for \"is either… or…\": that is inheritance with an abstract parent.",
+      "Verbs between nouns become associations: enrol, teach, belong, offered by.",
+      "Student–Course, Professor–Course, Professor–Department, Course–Department."
+    ],
+    "explanation": "Student and Professor generalize the abstract Person. The remaining four verbs are associations.",
+    "checkMembers": true,
+    "initial": {
+      "nodes": [],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "person",
+          "type": "umlClass",
+          "position": {
+            "x": 280,
+            "y": 20
+          },
+          "data": {
+            "label": "Person",
+            "kind": "abstract",
+            "attributes": "# name: String\n# email: String",
+            "methods": "",
+            "aliases": []
+          }
+        },
+        {
+          "id": "student",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 260
+          },
+          "data": {
+            "label": "Student",
+            "kind": "class",
+            "attributes": "- studentId: int",
+            "methods": "+ enrol(c: Course): void"
+          }
+        },
+        {
+          "id": "professor",
+          "type": "umlClass",
+          "position": {
+            "x": 520,
+            "y": 260
+          },
+          "data": {
+            "label": "Professor",
+            "kind": "class",
+            "attributes": "- office: String",
+            "methods": "+ teach(c: Course): void",
+            "aliases": [
+              "Lecturer",
+              "Teacher",
+              "Instructor"
+            ]
+          }
+        },
+        {
+          "id": "course",
+          "type": "umlClass",
+          "position": {
+            "x": 280,
+            "y": 520
+          },
+          "data": {
+            "label": "Course",
+            "kind": "class",
+            "attributes": "- code: String\n- credits: int",
+            "methods": ""
+          }
+        },
+        {
+          "id": "department",
+          "type": "umlClass",
+          "position": {
+            "x": 700,
+            "y": 520
+          },
+          "data": {
+            "label": "Department",
+            "kind": "class",
+            "attributes": "- name: String",
+            "methods": ""
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e13",
+          "source": "student",
+          "target": "person",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e14",
+          "source": "professor",
+          "target": "person",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e15",
+          "source": "student",
+          "target": "course",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e16",
+          "source": "professor",
+          "target": "course",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e17",
+          "source": "professor",
+          "target": "department",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e18",
+          "source": "course",
+          "target": "department",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "class-06-smart-home",
+    "number": 6,
+    "title": "Smart home",
+    "diagramType": "class",
+    "mode": "model",
+    "difficulty": "Advanced",
+    "category": "Model from text",
+    "scenario": "A Home is made of Rooms; a Room cannot exist without its Home. A Room contains several Devices, but a Device can be moved to another Room, so it survives the Room. Device is abstract with turnOn() and turnOff(). Light and Thermostat are Devices. Only Thermostat and Light can be scheduled, via a Schedulable interface they implement.",
+    "goal": "Model all six types. Choose the right whole-part relationship for each containment, and use realization for Schedulable.",
+    "objective": "Telling composition from aggregation is a classic exam question: ask whether the part can outlive the whole.",
+    "hints": [
+      "Room cannot exist without Home: composition. Device can leave a Room: aggregation.",
+      "Light and Thermostat both generalize Device, and both realize Schedulable.",
+      "Whole-part lines run from the part to the whole (the diamond sits on the whole)."
+    ],
+    "explanation": "Room ◆→ Home (composition), Device ◇→ Room (aggregation), two generalizations to Device, two realizations of Schedulable.",
+    "checkMembers": false,
+    "initial": {
+      "nodes": [],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "home",
+          "type": "umlClass",
+          "position": {
+            "x": 300,
+            "y": 20
+          },
+          "data": {
+            "label": "Home",
+            "kind": "class",
+            "attributes": "- address: String",
+            "methods": ""
+          }
+        },
+        {
+          "id": "room",
+          "type": "umlClass",
+          "position": {
+            "x": 300,
+            "y": 220
+          },
+          "data": {
+            "label": "Room",
+            "kind": "class",
+            "attributes": "- name: String",
+            "methods": ""
+          }
+        },
+        {
+          "id": "device",
+          "type": "umlClass",
+          "position": {
+            "x": 300,
+            "y": 440
+          },
+          "data": {
+            "label": "Device",
+            "kind": "abstract",
+            "attributes": "# id: String\n# on: boolean",
+            "methods": "+ turnOn(): void\n+ turnOff(): void"
+          }
+        },
+        {
+          "id": "light",
+          "type": "umlClass",
+          "position": {
+            "x": 40,
+            "y": 680
+          },
+          "data": {
+            "label": "Light",
+            "kind": "class",
+            "attributes": "- brightness: int",
+            "methods": "+ dim(level: int): void"
+          }
+        },
+        {
+          "id": "thermostat",
+          "type": "umlClass",
+          "position": {
+            "x": 540,
+            "y": 680
+          },
+          "data": {
+            "label": "Thermostat",
+            "kind": "class",
+            "attributes": "- target: double",
+            "methods": "+ setTarget(t: double): void"
+          }
+        },
+        {
+          "id": "schedulable",
+          "type": "umlClass",
+          "position": {
+            "x": 820,
+            "y": 440
+          },
+          "data": {
+            "label": "Schedulable",
+            "kind": "interface",
+            "attributes": "",
+            "methods": "+ schedule(at: Date): void",
+            "aliases": [
+              "Scheduler"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e19",
+          "source": "room",
+          "target": "home",
+          "type": "uml",
+          "data": {
+            "relType": "composition",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e20",
+          "source": "device",
+          "target": "room",
+          "type": "uml",
+          "data": {
+            "relType": "aggregation",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e21",
+          "source": "light",
+          "target": "device",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e22",
+          "source": "thermostat",
+          "target": "device",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e23",
+          "source": "light",
+          "target": "schedulable",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e24",
+          "source": "thermostat",
+          "target": "schedulable",
+          "type": "uml",
+          "data": {
+            "relType": "realization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "uc-01-library-kiosk",
+    "number": 7,
+    "title": "Library kiosk",
+    "diagramType": "usecase",
+    "mode": "build",
+    "difficulty": "Beginner",
+    "category": "Actors & use cases",
+    "scenario": "At a library kiosk a Member can borrow and return books. A Librarian manages the catalog. Members do not manage the catalog.",
+    "goal": "Connect each actor to exactly the use cases they take part in.",
+    "objective": "Associations link actors to use cases. Do not connect actors you were not told about.",
+    "hints": [
+      "One line per actor–use-case pair.",
+      "Member: Borrow Book and Return Book.",
+      "Librarian: Manage Catalog only."
+    ],
+    "explanation": "Three associations: Member–Borrow, Member–Return, Librarian–Manage Catalog.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "b",
+          "type": "boundary",
+          "position": {
+            "x": 220,
+            "y": 10
+          },
+          "width": 340,
+          "height": 380,
+          "zIndex": -1,
+          "data": {
+            "label": "Library Kiosk"
+          }
+        },
+        {
+          "id": "member",
+          "type": "actor",
+          "position": {
+            "x": 40,
+            "y": 100
+          },
+          "data": {
+            "label": "Member",
+            "aliases": [
+              "Reader",
+              "Borrower"
+            ]
+          }
+        },
+        {
+          "id": "librarian",
+          "type": "actor",
+          "position": {
+            "x": 40,
+            "y": 280
+          },
+          "data": {
+            "label": "Librarian"
+          }
+        },
+        {
+          "id": "borrow",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 60
+          },
+          "data": {
+            "label": "Borrow Book",
+            "aliases": [
+              "Borrow"
+            ]
+          }
+        },
+        {
+          "id": "return",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 160
+          },
+          "data": {
+            "label": "Return Book",
+            "aliases": [
+              "Return"
+            ]
+          }
+        },
+        {
+          "id": "catalog",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 290
+          },
+          "data": {
+            "label": "Manage Catalog"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "b",
+          "type": "boundary",
+          "position": {
+            "x": 220,
+            "y": 10
+          },
+          "width": 340,
+          "height": 380,
+          "zIndex": -1,
+          "data": {
+            "label": "Library Kiosk"
+          }
+        },
+        {
+          "id": "member",
+          "type": "actor",
+          "position": {
+            "x": 40,
+            "y": 100
+          },
+          "data": {
+            "label": "Member",
+            "aliases": [
+              "Reader",
+              "Borrower"
+            ]
+          }
+        },
+        {
+          "id": "librarian",
+          "type": "actor",
+          "position": {
+            "x": 40,
+            "y": 280
+          },
+          "data": {
+            "label": "Librarian"
+          }
+        },
+        {
+          "id": "borrow",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 60
+          },
+          "data": {
+            "label": "Borrow Book",
+            "aliases": [
+              "Borrow"
+            ]
+          }
+        },
+        {
+          "id": "return",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 160
+          },
+          "data": {
+            "label": "Return Book",
+            "aliases": [
+              "Return"
+            ]
+          }
+        },
+        {
+          "id": "catalog",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 290
+          },
+          "data": {
+            "label": "Manage Catalog"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e25",
+          "source": "member",
+          "target": "borrow",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e26",
+          "source": "member",
+          "target": "return",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e27",
+          "source": "librarian",
+          "target": "catalog",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "uc-02-online-shop",
+    "number": 8,
+    "title": "Checkout flow",
+    "diagramType": "usecase",
+    "mode": "build",
+    "difficulty": "Easy",
+    "category": "Include & extend",
+    "scenario": "A Customer places an order. Placing an order always includes making a payment, which involves the external Payment Service. Applying a coupon is optional: it only happens in some orders.",
+    "goal": "Use include for mandatory steps and extend for optional ones.",
+    "objective": "Include: always happens (arrow from base to included). Extend: sometimes happens (arrow from extension to base).",
+    "hints": [
+      "Mandatory: Place Order «include» Make Payment.",
+      "Optional: Apply Coupon «extend» Place Order. The arrow starts at Apply Coupon.",
+      "Actors: Customer–Place Order and Payment Service–Make Payment."
+    ],
+    "explanation": "Place Order → Make Payment is include. Apply Coupon → Place Order is extend. Actors attach with associations.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "b",
+          "type": "boundary",
+          "position": {
+            "x": 240,
+            "y": 0
+          },
+          "width": 460,
+          "height": 440,
+          "zIndex": -1,
+          "data": {
+            "label": "Online Shop"
+          }
+        },
+        {
+          "id": "customer",
+          "type": "actor",
+          "position": {
+            "x": 30,
+            "y": 150
+          },
+          "data": {
+            "label": "Customer"
+          }
+        },
+        {
+          "id": "gateway",
+          "type": "actor",
+          "position": {
+            "x": 770,
+            "y": 150
+          },
+          "data": {
+            "label": "Payment Service",
+            "aliases": [
+              "Payment Gateway",
+              "Payment Provider",
+              "Bank"
+            ]
+          }
+        },
+        {
+          "id": "order",
+          "type": "useCase",
+          "position": {
+            "x": 330,
+            "y": 60
+          },
+          "data": {
+            "label": "Place Order"
+          }
+        },
+        {
+          "id": "pay",
+          "type": "useCase",
+          "position": {
+            "x": 500,
+            "y": 190
+          },
+          "data": {
+            "label": "Make Payment",
+            "aliases": [
+              "Pay"
+            ]
+          }
+        },
+        {
+          "id": "coupon",
+          "type": "useCase",
+          "position": {
+            "x": 330,
+            "y": 330
+          },
+          "data": {
+            "label": "Apply Coupon",
+            "aliases": [
+              "Use Coupon",
+              "Apply Discount"
+            ]
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "b",
+          "type": "boundary",
+          "position": {
+            "x": 240,
+            "y": 0
+          },
+          "width": 460,
+          "height": 440,
+          "zIndex": -1,
+          "data": {
+            "label": "Online Shop"
+          }
+        },
+        {
+          "id": "customer",
+          "type": "actor",
+          "position": {
+            "x": 30,
+            "y": 150
+          },
+          "data": {
+            "label": "Customer"
+          }
+        },
+        {
+          "id": "gateway",
+          "type": "actor",
+          "position": {
+            "x": 770,
+            "y": 150
+          },
+          "data": {
+            "label": "Payment Service",
+            "aliases": [
+              "Payment Gateway",
+              "Payment Provider",
+              "Bank"
+            ]
+          }
+        },
+        {
+          "id": "order",
+          "type": "useCase",
+          "position": {
+            "x": 330,
+            "y": 60
+          },
+          "data": {
+            "label": "Place Order"
+          }
+        },
+        {
+          "id": "pay",
+          "type": "useCase",
+          "position": {
+            "x": 500,
+            "y": 190
+          },
+          "data": {
+            "label": "Make Payment",
+            "aliases": [
+              "Pay"
+            ]
+          }
+        },
+        {
+          "id": "coupon",
+          "type": "useCase",
+          "position": {
+            "x": 330,
+            "y": 330
+          },
+          "data": {
+            "label": "Apply Coupon",
+            "aliases": [
+              "Use Coupon",
+              "Apply Discount"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e28",
+          "source": "customer",
+          "target": "order",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e29",
+          "source": "order",
+          "target": "pay",
+          "type": "uml",
+          "data": {
+            "relType": "include",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e30",
+          "source": "gateway",
+          "target": "pay",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e31",
+          "source": "coupon",
+          "target": "order",
+          "type": "uml",
+          "data": {
+            "relType": "extend",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "uc-03-atm",
+    "number": 9,
+    "title": "ATM system",
+    "diagramType": "usecase",
+    "mode": "model",
+    "difficulty": "Intermediate",
+    "category": "Model from text",
+    "scenario": "A Customer can withdraw cash or check a balance at an ATM. Both always require authentication (PIN check), which talks to the Bank. After a withdrawal the customer may optionally print a receipt. A Technician refills the cash. Draw the system boundary.",
+    "goal": "Draw three actors, the use cases, and every include/extend relationship.",
+    "objective": "Reuse common behaviour with include, and model optional behaviour with extend.",
+    "hints": [
+      "Authentication is shared: both Withdraw Cash and Check Balance «include» it.",
+      "Print Receipt is optional: Print Receipt «extend» Withdraw Cash.",
+      "Actors: Customer (withdraw, balance), Bank (authenticate), Technician (refill)."
+    ],
+    "explanation": "Two includes into Authenticate, one extend from Print Receipt to Withdraw Cash, and four actor associations.",
+    "initial": {
+      "nodes": [],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "b",
+          "type": "boundary",
+          "position": {
+            "x": 230,
+            "y": 0
+          },
+          "width": 520,
+          "height": 560,
+          "zIndex": -1,
+          "data": {
+            "label": "ATM"
+          }
+        },
+        {
+          "id": "customer",
+          "type": "actor",
+          "position": {
+            "x": 30,
+            "y": 210
+          },
+          "data": {
+            "label": "Customer",
+            "aliases": [
+              "Client",
+              "Account Holder"
+            ]
+          }
+        },
+        {
+          "id": "bank",
+          "type": "actor",
+          "position": {
+            "x": 830,
+            "y": 240
+          },
+          "data": {
+            "label": "Bank",
+            "aliases": [
+              "Bank System",
+              "Banking System"
+            ]
+          }
+        },
+        {
+          "id": "tech",
+          "type": "actor",
+          "position": {
+            "x": 830,
+            "y": 440
+          },
+          "data": {
+            "label": "Technician",
+            "aliases": [
+              "ATM Technician",
+              "Maintenance Engineer"
+            ]
+          }
+        },
+        {
+          "id": "receipt",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 50
+          },
+          "data": {
+            "label": "Print Receipt",
+            "aliases": [
+              "Receipt"
+            ]
+          }
+        },
+        {
+          "id": "withdraw",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 170
+          },
+          "data": {
+            "label": "Withdraw Cash",
+            "aliases": [
+              "Withdraw Money",
+              "Cash Withdrawal"
+            ]
+          }
+        },
+        {
+          "id": "balance",
+          "type": "useCase",
+          "position": {
+            "x": 300,
+            "y": 310
+          },
+          "data": {
+            "label": "Check Balance",
+            "aliases": [
+              "View Balance"
+            ]
+          }
+        },
+        {
+          "id": "auth",
+          "type": "useCase",
+          "position": {
+            "x": 540,
+            "y": 240
+          },
+          "data": {
+            "label": "Authenticate",
+            "aliases": [
+              "Verify PIN",
+              "Authentication",
+              "Enter PIN",
+              "Login"
+            ]
+          }
+        },
+        {
+          "id": "refill",
+          "type": "useCase",
+          "position": {
+            "x": 540,
+            "y": 440
+          },
+          "data": {
+            "label": "Refill Cash",
+            "aliases": [
+              "Refill ATM",
+              "Load Cash"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e32",
+          "source": "customer",
+          "target": "withdraw",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e33",
+          "source": "customer",
+          "target": "balance",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e34",
+          "source": "withdraw",
+          "target": "auth",
+          "type": "uml",
+          "data": {
+            "relType": "include",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e35",
+          "source": "balance",
+          "target": "auth",
+          "type": "uml",
+          "data": {
+            "relType": "include",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e36",
+          "source": "bank",
+          "target": "auth",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e37",
+          "source": "receipt",
+          "target": "withdraw",
+          "type": "uml",
+          "data": {
+            "relType": "extend",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e38",
+          "source": "tech",
+          "target": "refill",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "uc-04-admin-user",
+    "number": 10,
+    "title": "Admin is a User",
+    "diagramType": "usecase",
+    "mode": "build",
+    "difficulty": "Easy",
+    "category": "Actor generalization",
+    "scenario": "Every Admin is also a User, so an Admin can do everything a User can. Users log in. Only Admins manage users.",
+    "goal": "Use actor generalization instead of duplicating associations.",
+    "objective": "A child actor inherits the parent actor's use cases, so do not draw Admin–Log In.",
+    "hints": [
+      "Admin generalizes User: arrow from Admin to User.",
+      "User–Log In is an association.",
+      "Admin–Manage Users is an association. There is no line from Admin to Log In."
+    ],
+    "explanation": "Admin → User generalization already gives Admin the Log In use case.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "user",
+          "type": "actor",
+          "position": {
+            "x": 80,
+            "y": 40
+          },
+          "data": {
+            "label": "User",
+            "aliases": [
+              "Registered User",
+              "Member"
+            ]
+          }
+        },
+        {
+          "id": "admin",
+          "type": "actor",
+          "position": {
+            "x": 80,
+            "y": 300
+          },
+          "data": {
+            "label": "Admin",
+            "aliases": [
+              "Administrator"
+            ]
+          }
+        },
+        {
+          "id": "login",
+          "type": "useCase",
+          "position": {
+            "x": 360,
+            "y": 40
+          },
+          "data": {
+            "label": "Log In"
+          }
+        },
+        {
+          "id": "manage",
+          "type": "useCase",
+          "position": {
+            "x": 360,
+            "y": 300
+          },
+          "data": {
+            "label": "Manage Users",
+            "aliases": [
+              "Manage Accounts"
+            ]
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "user",
+          "type": "actor",
+          "position": {
+            "x": 80,
+            "y": 40
+          },
+          "data": {
+            "label": "User",
+            "aliases": [
+              "Registered User",
+              "Member"
+            ]
+          }
+        },
+        {
+          "id": "admin",
+          "type": "actor",
+          "position": {
+            "x": 80,
+            "y": 300
+          },
+          "data": {
+            "label": "Admin",
+            "aliases": [
+              "Administrator"
+            ]
+          }
+        },
+        {
+          "id": "login",
+          "type": "useCase",
+          "position": {
+            "x": 360,
+            "y": 40
+          },
+          "data": {
+            "label": "Log In"
+          }
+        },
+        {
+          "id": "manage",
+          "type": "useCase",
+          "position": {
+            "x": 360,
+            "y": 300
+          },
+          "data": {
+            "label": "Manage Users",
+            "aliases": [
+              "Manage Accounts"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e39",
+          "source": "admin",
+          "target": "user",
+          "type": "uml",
+          "data": {
+            "relType": "generalization",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e40",
+          "source": "user",
+          "target": "login",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        },
+        {
+          "id": "e41",
+          "source": "admin",
+          "target": "manage",
+          "type": "uml",
+          "data": {
+            "relType": "association",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "",
+            "targetCard": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "er-01-blog",
+    "number": 11,
+    "title": "Blog",
+    "diagramType": "er",
+    "mode": "build",
+    "difficulty": "Beginner",
+    "category": "Crow's foot",
+    "scenario": "A User writes many Posts (a Post has exactly one author). A Post can have many Comments (a Comment belongs to exactly one Post). A User can also write many Comments (a Comment has exactly one author).",
+    "goal": "Draw three one-to-many relationships with the correct crow's foot at each end.",
+    "objective": "Read each relationship in both directions. The \"one\" end gets a double bar; the \"zero or many\" end gets a foot and a circle.",
+    "hints": [
+      "User ||──o{ Post",
+      "Post ||──o{ Comment",
+      "User ||──o{ Comment. Set the card at each end in the inspector."
+    ],
+    "explanation": "Three one-to-many links. The parent end is exactly one, the child end is zero or many.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "user",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 120
+          },
+          "data": {
+            "label": "User",
+            "attributes": "PK id: int\nname: varchar\nemail: varchar"
+          }
+        },
+        {
+          "id": "post",
+          "type": "erEntity",
+          "position": {
+            "x": 380,
+            "y": 120
+          },
+          "data": {
+            "label": "Post",
+            "attributes": "PK id: int\nFK user_id: int\ntitle: varchar\nbody: text"
+          }
+        },
+        {
+          "id": "comment",
+          "type": "erEntity",
+          "position": {
+            "x": 720,
+            "y": 120
+          },
+          "data": {
+            "label": "Comment",
+            "attributes": "PK id: int\nFK post_id: int\nFK user_id: int\ntext: text"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "user",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 120
+          },
+          "data": {
+            "label": "User",
+            "attributes": "PK id: int\nname: varchar\nemail: varchar"
+          }
+        },
+        {
+          "id": "post",
+          "type": "erEntity",
+          "position": {
+            "x": 380,
+            "y": 120
+          },
+          "data": {
+            "label": "Post",
+            "attributes": "PK id: int\nFK user_id: int\ntitle: varchar\nbody: text"
+          }
+        },
+        {
+          "id": "comment",
+          "type": "erEntity",
+          "position": {
+            "x": 720,
+            "y": 120
+          },
+          "data": {
+            "label": "Comment",
+            "attributes": "PK id: int\nFK post_id: int\nFK user_id: int\ntext: text"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e42",
+          "source": "user",
+          "target": "post",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e43",
+          "source": "post",
+          "target": "comment",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e44",
+          "source": "user",
+          "target": "comment",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "er-02-enrollment",
+    "number": 12,
+    "title": "Many-to-many with a link table",
+    "diagramType": "er",
+    "mode": "build",
+    "difficulty": "Easy",
+    "category": "Crow's foot",
+    "scenario": "A Student can enrol in zero or many Courses and a Course has zero or many Students. The link entity Enrollment stores one row per student-course pair, with a grade. Each Enrollment row belongs to exactly one Student and exactly one Course.",
+    "goal": "Break the many-to-many into two one-to-many relationships through Enrollment.",
+    "objective": "A many-to-many always becomes two one-to-many relationships via a link entity.",
+    "hints": [
+      "Student has no direct line to Course.",
+      "Student ||──o{ Enrollment",
+      "Course ||──o{ Enrollment"
+    ],
+    "explanation": "The link entity carries the foreign keys, so each parent is \"exactly one\" and Enrollment is \"zero or many\".",
+    "initial": {
+      "nodes": [
+        {
+          "id": "student",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 100
+          },
+          "data": {
+            "label": "Student",
+            "attributes": "PK id: int\nname: varchar"
+          }
+        },
+        {
+          "id": "enrollment",
+          "type": "erEntity",
+          "position": {
+            "x": 400,
+            "y": 100
+          },
+          "data": {
+            "label": "Enrollment",
+            "attributes": "PK id: int\nFK student_id: int\nFK course_id: int\ngrade: char"
+          }
+        },
+        {
+          "id": "course",
+          "type": "erEntity",
+          "position": {
+            "x": 760,
+            "y": 100
+          },
+          "data": {
+            "label": "Course",
+            "attributes": "PK id: int\ntitle: varchar\ncredits: int"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "student",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 100
+          },
+          "data": {
+            "label": "Student",
+            "attributes": "PK id: int\nname: varchar"
+          }
+        },
+        {
+          "id": "enrollment",
+          "type": "erEntity",
+          "position": {
+            "x": 400,
+            "y": 100
+          },
+          "data": {
+            "label": "Enrollment",
+            "attributes": "PK id: int\nFK student_id: int\nFK course_id: int\ngrade: char"
+          }
+        },
+        {
+          "id": "course",
+          "type": "erEntity",
+          "position": {
+            "x": 760,
+            "y": 100
+          },
+          "data": {
+            "label": "Course",
+            "attributes": "PK id: int\ntitle: varchar\ncredits: int"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e45",
+          "source": "student",
+          "target": "enrollment",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e46",
+          "source": "course",
+          "target": "enrollment",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "er-03-orders",
+    "number": 13,
+    "title": "E-commerce orders",
+    "diagramType": "er",
+    "mode": "build",
+    "difficulty": "Intermediate",
+    "category": "Crow's foot",
+    "scenario": "A Customer places zero or many Orders; each Order belongs to exactly one Customer. An Order contains one or many OrderItems (an order with no items is not allowed). Each OrderItem refers to exactly one Product, while a Product may appear in zero or many OrderItems.",
+    "goal": "Choose the correct minimum and maximum at each end.",
+    "objective": "Minimum matters: \"one or many\" (bar + foot) is different from \"zero or many\" (circle + foot).",
+    "hints": [
+      "Customer ||──o{ Order",
+      "Order ||──|{ OrderItem (an order needs at least one item).",
+      "Product ||──o{ OrderItem"
+    ],
+    "explanation": "Only Order → OrderItem has a mandatory child side (one or many); the other child sides may be empty.",
+    "initial": {
+      "nodes": [
+        {
+          "id": "customer",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 60
+          },
+          "data": {
+            "label": "Customer",
+            "attributes": "PK id: int\nname: varchar\nemail: varchar"
+          }
+        },
+        {
+          "id": "order",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 60
+          },
+          "data": {
+            "label": "Order",
+            "attributes": "PK id: int\nFK customer_id: int\nplaced_at: datetime"
+          }
+        },
+        {
+          "id": "item",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 380
+          },
+          "data": {
+            "label": "OrderItem",
+            "attributes": "PK id: int\nFK order_id: int\nFK product_id: int\nquantity: int",
+            "aliases": [
+              "Order Line",
+              "OrderLine"
+            ]
+          }
+        },
+        {
+          "id": "product",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 380
+          },
+          "data": {
+            "label": "Product",
+            "attributes": "PK id: int\nname: varchar\nprice: decimal"
+          }
+        }
+      ],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "customer",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 60
+          },
+          "data": {
+            "label": "Customer",
+            "attributes": "PK id: int\nname: varchar\nemail: varchar"
+          }
+        },
+        {
+          "id": "order",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 60
+          },
+          "data": {
+            "label": "Order",
+            "attributes": "PK id: int\nFK customer_id: int\nplaced_at: datetime"
+          }
+        },
+        {
+          "id": "item",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 380
+          },
+          "data": {
+            "label": "OrderItem",
+            "attributes": "PK id: int\nFK order_id: int\nFK product_id: int\nquantity: int",
+            "aliases": [
+              "Order Line",
+              "OrderLine"
+            ]
+          }
+        },
+        {
+          "id": "product",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 380
+          },
+          "data": {
+            "label": "Product",
+            "attributes": "PK id: int\nname: varchar\nprice: decimal"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e47",
+          "source": "customer",
+          "target": "order",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e48",
+          "source": "order",
+          "target": "item",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "one_or_many"
+          }
+        },
+        {
+          "id": "e49",
+          "source": "product",
+          "target": "item",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "er-04-hospital",
+    "number": 14,
+    "title": "Hospital appointments",
+    "diagramType": "er",
+    "mode": "model",
+    "difficulty": "Advanced",
+    "category": "Model from text",
+    "scenario": "A hospital has Departments, each with one or many Doctors (a Doctor works in exactly one Department). Patients book Appointments. A Patient can have zero or many Appointments and a Doctor can have zero or many Appointments. Every Appointment is with exactly one Patient and exactly one Doctor.",
+    "goal": "Draw the four entities, give each a primary key, and connect them with the right cardinalities.",
+    "objective": "Turn prose into entities, keys and crow's foot ends.",
+    "hints": [
+      "Put a line \"PK id: int\" in every entity.",
+      "Department ||──|{ Doctor (department needs at least one doctor).",
+      "Doctor and Patient each ||──o{ Appointment."
+    ],
+    "explanation": "Appointment resolves the many-to-many between Doctor and Patient. Department → Doctor is one-or-many because the text says \"one or many Doctors\".",
+    "checkMembers": true,
+    "initial": {
+      "nodes": [],
+      "edges": []
+    },
+    "solution": {
+      "nodes": [
+        {
+          "id": "department",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 40
+          },
+          "data": {
+            "label": "Department",
+            "attributes": "PK id: int\nname: varchar"
+          }
+        },
+        {
+          "id": "doctor",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 40
+          },
+          "data": {
+            "label": "Doctor",
+            "attributes": "PK id: int\nFK department_id: int\nname: varchar\nspeciality: varchar"
+          }
+        },
+        {
+          "id": "patient",
+          "type": "erEntity",
+          "position": {
+            "x": 40,
+            "y": 380
+          },
+          "data": {
+            "label": "Patient",
+            "attributes": "PK id: int\nname: varchar\nbirth_date: date"
+          }
+        },
+        {
+          "id": "appointment",
+          "type": "erEntity",
+          "position": {
+            "x": 420,
+            "y": 380
+          },
+          "data": {
+            "label": "Appointment",
+            "attributes": "PK id: int\nFK doctor_id: int\nFK patient_id: int\nstarts_at: datetime"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e50",
+          "source": "department",
+          "target": "doctor",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "one_or_many"
+          }
+        },
+        {
+          "id": "e51",
+          "source": "doctor",
+          "target": "appointment",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        },
+        {
+          "id": "e52",
+          "source": "patient",
+          "target": "appointment",
+          "type": "uml",
+          "data": {
+            "relType": "er",
+            "label": "",
+            "sourceMult": "",
+            "targetMult": "",
+            "sourceCard": "one_only",
+            "targetCard": "zero_or_many"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "redpen-uml",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Practice class, use case and ER diagrams from exam-style scenarios and get them marked. React + Node, JSON as the database, work held in browser memory.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "install:all": "npm install && npm install --prefix client",
+    "dev": "concurrently -n api,ui -c blue,magenta \"npm:dev:api\" \"npm:dev:ui\"",
+    "dev:api": "node --watch server/index.js",
+    "dev:ui": "npm run dev --prefix client",
+    "build": "npm install --prefix client && npm run build --prefix client",
+    "start": "node server/index.js",
+    "test": "node scripts/smoke-test.js"
+  },
+  "dependencies": {
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
