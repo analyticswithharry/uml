@@ -60,9 +60,9 @@ export default function Home() {
     <div className="home">
       <section className="hero">
         <div className="hero-copy">
-          <h1>Draw the diagram. Get it marked.</h1>
+          <h1>Software Engineering</h1>
           <p>
-            Practise class, use case and ER diagrams on a real canvas. Each scenario reads like an exam question, and the checker circles what a
+            class, Use Case and ER diagrams on a real canvas. Each scenario reads like an exam question, and the checker circles what a
             marker would: the wrong arrow, the missing line, the cardinality you flipped.
           </p>
           <div className="hero-cta">
