@@ -318,7 +318,10 @@
             "targetMult": "",
             "sourceCard": "",
             "targetCard": "",
-            "accept": ["association", "dependency"]
+            "accept": [
+              "association",
+              "dependency"
+            ]
           }
         }
       ]
@@ -699,7 +702,10 @@
             "targetMult": "",
             "sourceCard": "",
             "targetCard": "",
-            "accept": ["association", "dependency"]
+            "accept": [
+              "association",
+              "dependency"
+            ]
           }
         }
       ]
@@ -770,7 +776,11 @@
             "kind": "class",
             "attributes": "- office: String",
             "methods": "+ teach(c: Course): void",
-            "aliases": ["Lecturer", "Teacher", "Instructor"]
+            "aliases": [
+              "Lecturer",
+              "Teacher",
+              "Instructor"
+            ]
           }
         },
         {
@@ -996,7 +1006,9 @@
             "kind": "interface",
             "attributes": "",
             "methods": "+ schedule(at: Date): void",
-            "aliases": ["Scheduler"]
+            "aliases": [
+              "Scheduler"
+            ]
           }
         }
       ],
@@ -1130,7 +1142,10 @@
           },
           "data": {
             "label": "Member",
-            "aliases": ["Reader", "Borrower"]
+            "aliases": [
+              "Reader",
+              "Borrower"
+            ]
           }
         },
         {
@@ -1153,7 +1168,9 @@
           },
           "data": {
             "label": "Borrow Book",
-            "aliases": ["Borrow"]
+            "aliases": [
+              "Borrow"
+            ]
           }
         },
         {
@@ -1165,7 +1182,9 @@
           },
           "data": {
             "label": "Return Book",
-            "aliases": ["Return"]
+            "aliases": [
+              "Return"
+            ]
           }
         },
         {
@@ -1207,7 +1226,10 @@
           },
           "data": {
             "label": "Member",
-            "aliases": ["Reader", "Borrower"]
+            "aliases": [
+              "Reader",
+              "Borrower"
+            ]
           }
         },
         {
@@ -1230,7 +1252,9 @@
           },
           "data": {
             "label": "Borrow Book",
-            "aliases": ["Borrow"]
+            "aliases": [
+              "Borrow"
+            ]
           }
         },
         {
@@ -1242,7 +1266,9 @@
           },
           "data": {
             "label": "Return Book",
-            "aliases": ["Return"]
+            "aliases": [
+              "Return"
+            ]
           }
         },
         {
@@ -1356,7 +1382,11 @@
           },
           "data": {
             "label": "Payment Service",
-            "aliases": ["Payment Gateway", "Payment Provider", "Bank"]
+            "aliases": [
+              "Payment Gateway",
+              "Payment Provider",
+              "Bank"
+            ]
           }
         },
         {
@@ -1379,7 +1409,9 @@
           },
           "data": {
             "label": "Make Payment",
-            "aliases": ["Pay"]
+            "aliases": [
+              "Pay"
+            ]
           }
         },
         {
@@ -1391,7 +1423,10 @@
           },
           "data": {
             "label": "Apply Coupon",
-            "aliases": ["Use Coupon", "Apply Discount"]
+            "aliases": [
+              "Use Coupon",
+              "Apply Discount"
+            ]
           }
         }
       ],
@@ -1433,7 +1468,11 @@
           },
           "data": {
             "label": "Payment Service",
-            "aliases": ["Payment Gateway", "Payment Provider", "Bank"]
+            "aliases": [
+              "Payment Gateway",
+              "Payment Provider",
+              "Bank"
+            ]
           }
         },
         {
@@ -1456,7 +1495,9 @@
           },
           "data": {
             "label": "Make Payment",
-            "aliases": ["Pay"]
+            "aliases": [
+              "Pay"
+            ]
           }
         },
         {
@@ -1468,7 +1509,10 @@
           },
           "data": {
             "label": "Apply Coupon",
-            "aliases": ["Use Coupon", "Apply Discount"]
+            "aliases": [
+              "Use Coupon",
+              "Apply Discount"
+            ]
           }
         }
       ],
@@ -1578,7 +1622,10 @@
           },
           "data": {
             "label": "Customer",
-            "aliases": ["Client", "Account Holder"]
+            "aliases": [
+              "Client",
+              "Account Holder"
+            ]
           }
         },
         {
@@ -1590,7 +1637,10 @@
           },
           "data": {
             "label": "Bank",
-            "aliases": ["Bank System", "Banking System"]
+            "aliases": [
+              "Bank System",
+              "Banking System"
+            ]
           }
         },
         {
@@ -1602,7 +1652,10 @@
           },
           "data": {
             "label": "Technician",
-            "aliases": ["ATM Technician", "Maintenance Engineer"]
+            "aliases": [
+              "ATM Technician",
+              "Maintenance Engineer"
+            ]
           }
         },
         {
@@ -1614,7 +1667,9 @@
           },
           "data": {
             "label": "Print Receipt",
-            "aliases": ["Receipt"]
+            "aliases": [
+              "Receipt"
+            ]
           }
         },
         {
@@ -1626,7 +1681,10 @@
           },
           "data": {
             "label": "Withdraw Cash",
-            "aliases": ["Withdraw Money", "Cash Withdrawal"]
+            "aliases": [
+              "Withdraw Money",
+              "Cash Withdrawal"
+            ]
           }
         },
         {
@@ -1638,7 +1696,9 @@
           },
           "data": {
             "label": "Check Balance",
-            "aliases": ["View Balance"]
+            "aliases": [
+              "View Balance"
+            ]
           }
         },
         {
@@ -1650,7 +1710,12 @@
           },
           "data": {
             "label": "Authenticate",
-            "aliases": ["Verify PIN", "Authentication", "Enter PIN", "Login"]
+            "aliases": [
+              "Verify PIN",
+              "Authentication",
+              "Enter PIN",
+              "Login"
+            ]
           }
         },
         {
@@ -1662,7 +1727,10 @@
           },
           "data": {
             "label": "Refill Cash",
-            "aliases": ["Refill ATM", "Load Cash"]
+            "aliases": [
+              "Refill ATM",
+              "Load Cash"
+            ]
           }
         }
       ],
@@ -1796,7 +1864,10 @@
           },
           "data": {
             "label": "User",
-            "aliases": ["Registered User", "Member"]
+            "aliases": [
+              "Registered User",
+              "Member"
+            ]
           }
         },
         {
@@ -1808,7 +1879,9 @@
           },
           "data": {
             "label": "Admin",
-            "aliases": ["Administrator"]
+            "aliases": [
+              "Administrator"
+            ]
           }
         },
         {
@@ -1831,7 +1904,9 @@
           },
           "data": {
             "label": "Manage Users",
-            "aliases": ["Manage Accounts"]
+            "aliases": [
+              "Manage Accounts"
+            ]
           }
         }
       ],
@@ -1848,7 +1923,10 @@
           },
           "data": {
             "label": "User",
-            "aliases": ["Registered User", "Member"]
+            "aliases": [
+              "Registered User",
+              "Member"
+            ]
           }
         },
         {
@@ -1860,7 +1938,9 @@
           },
           "data": {
             "label": "Admin",
-            "aliases": ["Administrator"]
+            "aliases": [
+              "Administrator"
+            ]
           }
         },
         {
@@ -1883,7 +1963,9 @@
           },
           "data": {
             "label": "Manage Users",
-            "aliases": ["Manage Accounts"]
+            "aliases": [
+              "Manage Accounts"
+            ]
           }
         }
       ],
@@ -2258,7 +2340,10 @@
           "data": {
             "label": "OrderItem",
             "attributes": "PK id: int\nFK order_id: int\nFK product_id: int\nquantity: int",
-            "aliases": ["Order Line", "OrderLine"]
+            "aliases": [
+              "Order Line",
+              "OrderLine"
+            ]
           }
         },
         {
@@ -2312,7 +2397,10 @@
           "data": {
             "label": "OrderItem",
             "attributes": "PK id: int\nFK order_id: int\nFK product_id: int\nquantity: int",
-            "aliases": ["Order Line", "OrderLine"]
+            "aliases": [
+              "Order Line",
+              "OrderLine"
+            ]
           }
         },
         {

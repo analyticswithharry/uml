@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Practice class, use case and ER diagrams from exam-style scenarios and get them marked. React + Node, JSON as the database, work held in browser memory.",
-  "engines": {
-    "node": ">=18"
-  },
+  "engines": { "node": ">=18" },
   "scripts": {
     "install:all": "npm install && npm install --prefix client",
     "dev": "concurrently -n api,ui -c blue,magenta \"npm:dev:api\" \"npm:dev:ui\"",
