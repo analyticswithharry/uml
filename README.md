@@ -1,11 +1,11 @@
 # Redpen UML
 
-Practise **class**, **use case** and **ER** diagrams from exam-style scenarios, then press *Check* and get them marked: wrong arrow, missing line, flipped cardinality.
+Practise **class**, **use case** and **ER** diagrams from exam-style scenarios, then press _Check_ and get them marked: wrong arrow, missing line, flipped cardinality.
 
 - **Frontend:** React 18 + Vite, [React Flow](https://reactflow.dev) canvas, Zustand store
 - **Backend:** plain Node.js (no framework, no database server)
 - **Database:** JSON files in [`/data`](./data), read-only
-- **Your work:** held in **browser memory only**. Refresh the page and it is gone (a warning appears first). Use *Memory only → Save workspace* in the top bar to keep a copy as a file.
+- **Your work:** held in **browser memory only**. Refresh the page and it is gone (a warning appears first). Use _Memory only → Save workspace_ in the top bar to keep a copy as a file.
 - **No login, no dashboard.**
 
 ## Run it locally
@@ -21,11 +21,11 @@ Open **http://localhost:5173**. Vite forwards `/api` calls to the Node server.
 
 Other commands:
 
-| Command | What it does |
-| --- | --- |
-| `npm test` | Smoke-tests the API: every reference solution must score 100, exports and importers work |
-| `npm run build` | Builds the UI into `client/dist` |
-| `npm start` | After a build, serves UI + API together on http://localhost:4000 (closest to Vercel) |
+| Command         | What it does                                                                             |
+| --------------- | ---------------------------------------------------------------------------------------- |
+| `npm test`      | Smoke-tests the API: every reference solution must score 100, exports and importers work |
+| `npm run build` | Builds the UI into `client/dist`                                                         |
+| `npm start`     | After a build, serves UI + API together on http://localhost:4000 (closest to Vercel)     |
 
 ## Deploy to Vercel through GitHub
 
@@ -47,12 +47,12 @@ The `api/[...path].js` file turns the same Node handler used locally into a Verc
 
 ## What each repository contributed
 
-| Repository | What was learned and used |
-| --- | --- |
-| **umly** | Puzzle-based learning: scenario + goal + hints + objective, `build` and "model from text" modes, difficulty tiers, React Flow canvas with custom UML nodes, local-only drafts, export. Redpen adds its own scenarios and a name-matching checker (so drawing from scratch can be marked too). |
-| **Apollon** | Editor UX: element palette on the left, properties panel on the right, undo/redo, 13-diagram thinking narrowed to the three exams use. PNG/SVG/JSON export. Notation-accurate line ends (diamonds, triangles, crow's feet) drawn as plain SVG so they survive export. |
-| **swagger2puml** | *Import OpenAPI/Swagger → class diagram* (`allOf` becomes inheritance, `$ref` becomes an association, enums become enumerations) and *PlantUML output*. |
-| **umlwriter** | *Source code → class diagram* (Java, TypeScript, PHP classes, interfaces, members, extends/implements, typed fields) and text output of diagrams (PlantUML and Mermaid). |
+| Repository       | What was learned and used                                                                                                                                                                                                                                                                     |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **umly**         | Puzzle-based learning: scenario + goal + hints + objective, `build` and "model from text" modes, difficulty tiers, React Flow canvas with custom UML nodes, local-only drafts, export. Redpen adds its own scenarios and a name-matching checker (so drawing from scratch can be marked too). |
+| **Apollon**      | Editor UX: element palette on the left, properties panel on the right, undo/redo, 13-diagram thinking narrowed to the three exams use. PNG/SVG/JSON export. Notation-accurate line ends (diamonds, triangles, crow's feet) drawn as plain SVG so they survive export.                         |
+| **swagger2puml** | _Import OpenAPI/Swagger → class diagram_ (`allOf` becomes inheritance, `$ref` becomes an association, enums become enumerations) and _PlantUML output_.                                                                                                                                       |
+| **umlwriter**    | _Source code → class diagram_ (Java, TypeScript, PHP classes, interfaces, members, extends/implements, typed fields) and text output of diagrams (PlantUML and Mermaid).                                                                                                                      |
 
 No code was copied from these projects. The ideas were re-implemented for this stack.
 
@@ -80,13 +80,13 @@ data/
 
 Lines are stored as `source → target`:
 
-| Relationship | Draw it from… to… |
-| --- | --- |
-| Generalization / realization | child → parent / class → interface |
-| Aggregation / composition | **part → whole** (the diamond appears on the whole) |
-| Include | base use case → included use case |
-| Extend | extension → base use case |
-| Association / ER relationship | either direction |
+| Relationship                  | Draw it from… to…                                   |
+| ----------------------------- | --------------------------------------------------- |
+| Generalization / realization  | child → parent / class → interface                  |
+| Aggregation / composition     | **part → whole** (the diamond appears on the whole) |
+| Include                       | base use case → included use case                   |
+| Extend                        | extension → base use case                           |
+| Association / ER relationship | either direction                                    |
 
 Boxes are matched **by name** (case, spaces and plurals ignored; aliases allowed), so a student can rename or add boxes freely.
 
@@ -108,7 +108,7 @@ Edit [`data/puzzles.json`](./data/puzzles.json) and restart the server. Each ent
 }
 ```
 
-Easiest way to author one: draw the solution in the Studio, *Export → JSON*, and paste its `nodes` and `edges` into `solution`. Optional per node: `data.aliases` (other accepted names). Optional per edge: `data.accept` (extra accepted relationship types). Optional per puzzle: `checkMembers: true` for advisory tips about attributes.
+Easiest way to author one: draw the solution in the Studio, _Export → JSON_, and paste its `nodes` and `edges` into `solution`. Optional per node: `data.aliases` (other accepted names). Optional per edge: `data.accept` (extra accepted relationship types). Optional per puzzle: `checkMembers: true` for advisory tips about attributes.
 
 ## Notes
 
